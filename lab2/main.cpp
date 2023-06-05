@@ -2,6 +2,7 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -67,7 +68,7 @@ void calculateValues(vector<pair<double, double>> &table) {
 
     // В форме Лагранжа
     double sum = 0, summand;
-    cout << "=====Lagrange Polynomial=====\nL(x) = ";
+    cout << "\n=====Lagrange Polynomial=====\nL(x) = ";
     
     for (uint16_t k = 0; k < n; ++k) {
         summand = table.at(k).second;  // f(Xk)
@@ -77,7 +78,8 @@ void calculateValues(vector<pair<double, double>> &table) {
             summand *= (x0 - table.at(i).first) / (table.at(k).first - table.at(i).first);
             cout << " * (x - " << table.at(i).first << ") / " << table.at(k).first - table.at(i).first;
         }
-        if (k < n - 1) cout << " + "
+        if (k < n - 1) cout << " +\n+ ";
+        else cout << "\n=================\n\n";
         sum += summand;
     }
     cout << "Lagrange form: Pn(x0) = " << sum << endl;
